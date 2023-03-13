@@ -1,0 +1,83 @@
+name: learn-github-he file starts with six keyactions
+
+on: 
+  push:
+    branches:
+      - Develop
+
+jobs:
+  clone-test-repo:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2 #checkout the code 
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin' 
+        java-version: '17'
+
+
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
+
+    - name: get pwd
+      run: pwd
+       
+    - name: build with gradle
+      run: gradle build
+
+    - name: Install and Run Appium Server
+      run: |
+        chmod +x scripts/RunAppiumServer.sh 
+        scripts/RunAppiumServer.sh
+
+        
+    - name: run Emulator 
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 29
+        script: gradle build
+
+    - name: printing apk
+      run: ls app/build/outputs/apk/debug/app-debug.apk
+
+
+    - name: Cloning repo
+      uses: actions/checkout@v2
+      with:
+        repository: sahilpatel-Infocusp/Tests
+        token: ${{  secrets.PAT_TOKEN  }}
+        path: /home/runner/work//Calculator/Calculator
+        submodules: recursive
+      
+    - name: checking cloned repo
+      uses: andstor/file-existence-action@v2
+      with:
+        files: "opsis_project, requirements.txt"
+
+    - name: File exists
+      if: steps.check_files.outputs.files_exists == 'true'
+      run: echo All files exists!
+
+
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - run: python3 --version
+
+
+    - name: installing dependency
+      run: pip3 install -r requirements.txt
+
+
+    - name: running the required file
+      run: |
+        pwd
+        ls
+        pytest -v 
+        python3 opsis_project/test/test_build.py
+
+
+
+
