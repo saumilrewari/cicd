@@ -51,13 +51,13 @@ jobs:
       with:
         repository: saumilrewari/test
 #        token: ${{  secrets.PAT_TOKEN  }}
-        path: /home/runner/work/cicd/cicd
+        path: /home/runner/work/cicd/cicd/test
         submodules: recursive
 
     - name: checking cloned repo
       uses: andstor/file-existence-action@v2
       with:
-        files: "opsis_project, opsis_project/requirements.txt"
+        files: "test/opsis_project, test/opsis_project/requirements.txt"
 
     - name: File exists
       if: steps.check_files.outputs.files_exists == 'true'
@@ -65,8 +65,8 @@ jobs:
 
     - name: Install and Run Appium Server
       run: |
-        chmod +x RunAppiumServer.sh
-        sh RunAppiumServer.sh
+        chmod +x test/RunAppiumServer.sh
+        sh test/RunAppiumServer.sh
 
     - name: Install Python
       uses: actions/setup-python@v4
@@ -76,7 +76,7 @@ jobs:
 
 
     - name: installing dependency
-      run: pip3 install -r opsis_project/requirements.txt
+      run: pip3 install -r test/opsis_project/requirements.txt
 
 
     - name: running the required file
@@ -84,7 +84,7 @@ jobs:
         pwd
         ls
         pytest -k="test_pass" -vv 
-        python3 opsis_project/test/test_build.py
+        python3 test/opsis_project/test/test_build.py
         
 
 
