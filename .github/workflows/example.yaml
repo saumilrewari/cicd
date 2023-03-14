@@ -78,6 +78,7 @@ jobs:
         ls
         pytest -k="test_pass" -vv 
         python3 opsis_project/test/test_build.py
+        
 
 
 
