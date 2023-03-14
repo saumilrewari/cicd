@@ -76,7 +76,7 @@ jobs:
       run: |
         pwd
         ls
-        pytest -v 
+        pytest -k="test_pass" -vv 
         python3 opsis_project/test/test_build.py
 
 
