@@ -46,7 +46,7 @@ jobs:
 #        token: ${{  secrets.PAT_TOKEN  }}
 #        path: /home/runner/work//Calculator/Calculator
         submodules: recursive
-      
+
     - name: checking cloned repo
       uses: andstor/file-existence-action@v2
       with:
@@ -69,7 +69,7 @@ jobs:
 
 
     - name: installing dependency
-      run: pip3 install -r requirements.txt
+      run: pip3 install -r opsis_project/requirements.txt
 
 
     - name: running the required file
