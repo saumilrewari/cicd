@@ -37,11 +37,12 @@ jobs:
 #
 #
     - name: run Emulator
-      uses: vgaidarji/android-github-actions-emulator@v1.0.1
-#      uses: reactivecircus/android-emulator-runner@v2
-#      with:
-#        api-level: 29
-#        script: ./gradlew connectedCheck
+#      uses: vgaidarji/android-github-actions-emulator@v1.0.1
+
+      uses: ReactiveCircus/android-emulator-runner@v2.27.0
+      with:
+        api-level: 29
+        script: ./gradlew connectedCheck
 
 #    - name: printing apk
 #      run: ls app/build/outputs/apk/debug/app-debug.apk
