@@ -42,6 +42,7 @@ jobs:
       uses: ReactiveCircus/android-emulator-runner@v2.27.0
       with:
         api-level: 29
+        script: pwd
 #       script: ./gradlew connectedCheck
 
 #    - name: printing apk
