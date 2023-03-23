@@ -54,7 +54,7 @@ jobs:
       with:
         repository: saumilrewari/test
 #        token: ${{  secrets.PAT_TOKEN  }}
-        path: /home/runner/work/cicd/cicd/test
+        path: /Users/runner/work/cicd/cicd/test
         submodules: recursive
 
     - name: checking cloned repo
