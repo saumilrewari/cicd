@@ -35,11 +35,11 @@ jobs:
 #         chmod +x scripts/RunAppiumServer.sh
 #         scripts/RunAppiumServer.sh
 
-    - name: run Emulator
-      uses: ReactiveCircus/android-emulator-runner@v2.27.0
-      with:
-        api-level: 29
-        script: pwd
+#     - name: run Emulator
+#       uses: ReactiveCircus/android-emulator-runner@v2.27.0
+#       with:
+#         api-level: 29
+#         script: pwd
 
 #       script: ./gradlew connectedCheck
 
@@ -79,12 +79,18 @@ jobs:
     - name: installing dependency
       run: pip3 install -r test/opsis_project/requirements.txt
 
+    - name: run Emulator
+      uses: ReactiveCircus/android-emulator-runner@v2.27.0
+      with:
+        api-level: 29
+        script: pytest -k="test_pass" -v
 
-    - name: running the required file
-      run: |
-        pwd
-        ls -l
-        pytest -k="test_pass" -v
+
+#     - name: running the required file
+#       run: |
+#         pwd
+#         ls -l
+#         pytest -k="test_pass" -v
 #        python3 test/opsis_project/test/test_build.py
         
 
