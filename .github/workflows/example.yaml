@@ -37,16 +37,14 @@ jobs:
 #
 #
     - name: run Emulator
-#      uses: vgaidarji/android-github-actions-emulator@v1.0.1
-
       uses: ReactiveCircus/android-emulator-runner@v2.27.0
       with:
         api-level: 29
         script: pwd
 #       script: ./gradlew connectedCheck
 
-#    - name: printing apk
-#      run: ls app/build/outputs/apk/debug/app-debug.apk
+    - name: printing apk
+      run: ls app/build/outputs/apk/debug/app-debug.apk
 
 
     - name: Cloning repo
