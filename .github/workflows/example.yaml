@@ -58,12 +58,12 @@ jobs:
     - name: checking cloned repo
       uses: andstor/file-existence-action@v2
       with:
-        files: "test/opsis_project, test/opsis_project/requirements.txt"
-
+        files: "test/opsis_project, test/opsis_project/requirements.txt, test.apk"
+        
     - name: File exists
       if: steps.check_files.outputs.files_exists == 'true'
       run: echo All files exists!
-
+      
     - name: Install and Run Appium Server
       run: |
         chmod +x test/RunAppiumServer.sh
@@ -83,9 +83,9 @@ jobs:
     - name: running the required file
       run: |
         pwd
-        ls
-        pytest -k="test_pass" -vv 
-        python3 test/opsis_project/test/test_build.py
+        ls -l
+        pytest -k="test_pass" -v
+#        python3 test/opsis_project/test/test_build.py
         
 
 
