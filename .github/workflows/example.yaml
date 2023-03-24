@@ -43,8 +43,8 @@ jobs:
 
 #       script: ./gradlew connectedCheck
 
-    - name: printing apk
-      run: ls app/build/outputs/apk/debug/app-debug.apk
+#     - name: printing apk
+#       run: ls app/build/outputs/apk/debug/app-debug.apk
 
 
     - name: Cloning repo
